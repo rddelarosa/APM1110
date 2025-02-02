@@ -1,6 +1,6 @@
 ---
 title: "SEC_1-FA1_GROUP_6-DELA ROSA, R"
-subtitle: "Github Link: https://github.com/rddelarosa/APM1110/blob/0faa90154a1d4d54468fb3328dcd9374dd4d68a7/FA1/SEC_1-FA1_GROUP_6-DELA%20ROSA%2C%20R.Rmd"
+subtitle: "**Github Link: https://github.com/rddelarosa/APM1110/blob/main/FA1/SEC_1-FA1_GROUP_6-DELA%20ROSA%2C%20R.Rmd**"
 author: "Roland Dela Rosa"
 date: "Feb 1, 2025"
 output: pdf_document
