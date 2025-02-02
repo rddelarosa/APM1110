@@ -1,8 +1,8 @@
 ---
 title: "SEC_1-FA1_GROUP_6-DELA ROSA, R"
-subtitle: "Github Link: https://github.com/rddelarosa/APM1110/tree/ac696deeb7caea0bf384eca2a8a9d8cc6041a182/FA1"
+subtitle: "Github Link: https://github.com/rddelarosa/APM1110/blob/0faa90154a1d4d54468fb3328dcd9374dd4d68a7/FA1/SEC_1-FA1_GROUP_6-DELA%20ROSA%2C%20R.Rmd"
 author: "Roland Dela Rosa"
-date: "`r Sys.Date()`"
+date: "Feb 1, 2025"
 output: pdf_document
 ---
 
@@ -15,11 +15,13 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Pearson has given an approximate formula for the skewness that is easier to calculate than the exact formula given in Equation 2.1.
 
 ### Read the dataset
+
 ```{r}
 data <- read.table("results.txt", header = TRUE)
 ```
 
 ### Compute Normal Skewness
+
 ```{r}
 skew_n <- function(x) {
   mean_x <- mean(x, na.rm = TRUE)  
@@ -28,11 +30,11 @@ skew_n <- function(x) {
   skew <- (sqrt(length(x))* sum2)/(sum1 **(3/2))
   skew
 }
-subjects <- c("Arch1", "Prog1", "Arch2", "Prog2")
-skewness_exact <- sapply(subjects, function(subj) skew_n(data[[subj]]))
-print(skewness_exact)
+
 ```
+
 ### Compute Pearson's skewness for each subject
+
 ```{r}
 skew_p <- function(x) {
   mean_x <- mean(x, na.rm = TRUE)
@@ -42,49 +44,41 @@ skew_p <- function(x) {
   return(3 * (mean_x - median_x) / sd_x)
 }
 
-skewness_values <- sapply(subjects, function(subj) skew_p(data[[subj]]))
-print(skewness_values)
+subjects <- c("Arch1", "Prog1", "Arch2", "Prog2")
+
+result <- sapply(subjects, function(subj) {
+  list(Skewness_Coefficient = skew_n(data[[subj]]),Pearson = skew_p(data[[subj]]))
+})
+print(result)
+
 ```
 
+### What can you say about these data (Skewness Coefficient)?
 
-### Boxplot for Skewness Visualization
-```{r}
-boxplot(data[, subjects], main = "Boxplot of Skewness Distribution", col = c("red", "green", "blue", "purple"), 
-        names = subjects, ylab = "Scores")
-```
+In the analysis of the Skewness Coefficient results, Prog1, Arch2, and Prog2 are fairly symmetrical. This shows that the majority of students in Prog1 and Prog2 performed well, with some having low scores. For Arch2, more students scored below average, which explains why a small group of students is excelling. On the other hand, Arch1 is moderately skewed, indicating that more students scored above average.
 
-### Boxplot for Pearson's and Normal Skewness
-```{r}
-boxplot(skewness_values, skewness_exact, names = c("Pearson", "Normal"), col = c("orange", "blue"),
-        main = "Comparison of Pearson and Normal Skewness", ylab = "Skewness Coefficient")
-```
 
-### Interpretation
-#### Pearson's Skewness
-Pearson's skewness is a simpler measure that estimates skewness using mean, median, and standard deviation. It is useful when a quick approximation is needed but may not always capture extreme skewness accurately.
+### Is it a reasonable approximation?
 
-#### Normal Skewness
-The normal skewness calculation accounts for the third moment of the data distribution, providing a more precise measure of asymmetry. This method is generally more accurate for highly skewed distributions.
-
-#### Comparison
-Comparing both values, Pearson's skewness is generally close to the normal skewness but may deviate when the data distribution is highly skewed or has extreme outliers. The boxplot comparing both skewness values visually represents their differences across different subjects.
+Yes, Pearson’s Skewness provides a reasonable approximation in most cases. In this analysis, comparing Pearson’s Skewness with the Skewness Coefficient for Arch1, Arch2, and Prog2, the difference between Pearson’s and Normal Skewness is small, indicating that Pearson’s offers a reasonable approximation. However, for Prog1, Pearson’s slightly overestimates skewness.
 
 ---
 
-## 2.  For the class of 50 students of computing detailed in Exercise 1.1, use R to 
+## 2. For the class of 50 students of computing detailed in Exercise 1.1, use R to
 
-## (a)  form the stem-and-leaf display for each gender, and discuss the advantages of this representation compared to the traditional histogram; 
+## (a) form the stem-and-leaf display for each gender, and discuss the advantages of this representation compared to the traditional histogram;
 
-## (b)  construct a box-plot for each gender and discuss the findings. 
+## (b) construct a box-plot for each gender and discuss the findings.
 
 ### Define the data
+
 ```{r}
-females <- c(57, 59, 78, 79, 60, 65, 68, 71, 75, 48, 51, 55, 56, 41, 43, 
-             44, 75, 78, 80, 81, 83, 83, 85)
-males <- c(48, 49, 49, 30, 30, 31, 32, 35, 37, 41, 86, 42, 51, 53, 56,
-           42, 44, 50, 51, 65, 67, 51, 56, 58, 64, 64, 75)
+females <- c(57, 59, 78, 79, 60, 65, 68, 71, 75, 48, 51, 55, 56, 41, 43, 44, 75, 78, 80, 81, 83, 83, 85)
+males <- c(48, 49, 49, 30, 30, 31, 32, 35, 37, 41, 86, 42, 51, 53, 56, 42, 44, 50, 51, 65, 67, 51, 56, 58, 64, 64, 75)
 ```
+
 ### (a) Stem-and-Leaf Display
+
 ```{r}
 cat("\nStem-and-Leaf for Females:\n")
 stem(females)
@@ -92,21 +86,21 @@ stem(females)
 cat("\nStem-and-Leaf for Males:\n")
 stem(males)
 ```
-### Interpretation of Stem-and-Leaf vs. Histogram
-The stem-and-leaf plot preserves individual data points while showing the overall shape of the distribution. Compared to a histogram, it provides a more detailed view of the actual values while still displaying the distribution.
+
+### Stem-and-Leaf vs. Histogram
+
+The stem-and-leaf plot preserves individual data while showing the overall shape of the distribution. It provides a more detailed view of the actual values while still displaying the distribution. On the other hand, histogram is better used for larger data sets where you want to observe the general shape of the distribution.
 
 ---
 
 ### (b) Boxplot Comparison
+
 ```{r}
-boxplot(females, males, names = c("Females", "Males"), col = c("pink", "blue"), 
-        main = "Boxplot of Scores by Gender", ylab = "Scores")
+boxplot(females, males, names = c("Females", "Males"), 
+        col = c("pink", "blue"), 
+        main = "Boxplot of Scores by Gender", 
+        ylab = "Scores")
 ```
 
 ### Interpretation
-The boxplot allows us to visualize the spread, median, and presence of outliers. If the median line is not centered, it indicates skewness. The interquartile range (IQR) shows score variability, and outliers (if present) highlight extreme values. 
-
-From the boxplot, we can compare the central tendency and dispersion between male and female students.
-
----
-
+The boxplot allows us to visualize the spread, median, and presence of outliers. In the analysis, The median score for females is higher than for males, suggesting that the middle values of the female data are generally greater.Also, the range of the female data is wide, but there aren't many outliers. On the other hand, the male data has a one high outlier (86), indicating more variation within this group.
