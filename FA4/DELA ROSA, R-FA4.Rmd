@@ -4,7 +4,7 @@ author: "Roland Dela Rosa"
 date: "`r Sys.Date()`"
 output:
   output: md_document
-subtitle: "**Github Link: https://github.com/rddelarosa/APM1110/blob/main/FAE1/SEC_1-FA4-DELA-ROSA%2C-R.md?plain=1**"
+subtitle: "**Github Link: https://github.com/rddelarosa/APM1110/blob/main/FA4/DELA%20ROSA%2C%20R-FA4.md?plain=1**"
 ---
 
 
