@@ -2,9 +2,9 @@
 title: "SEC 1-FAE1-DELA ROSA, R"
 author: "Roland Dela Rosa"
 date: "`r Sys.Date()`"
-output:
-  output: md_document
-subtitle: "**Github Link: https://github.com/rddelarosa/APM1110/blob/main/FA4/DELA%20ROSA%2C%20R-FA4.md?plain=1**"
+output: pdf_document
+subtitle: "**Github Link: 
+https://github.com/rddelarosa/APM1110/blob/main/FA4/DELA%20ROSA%2C%20R-FA4.Rmd**"
 ---
 
 
