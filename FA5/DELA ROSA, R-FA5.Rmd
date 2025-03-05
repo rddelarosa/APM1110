@@ -1,0 +1,105 @@
+---
+title: "SEC 1-FAE1-DELA ROSA, R"
+author: "Roland Dela Rosa"
+date: "`r Sys.Date()`"
+output:
+  output: pdf_document
+subtitle: "**Github Link: 
+https://github.com/rddelarosa/APM1110/blob/main/FA5/DELA%20ROSA%2C%20R-FA5.Rmd**"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## An email message can travel through one of three server routes. The percentage of errors in each of the servers and the percentage of messages that travel through each route are shown in the following table. Assume that the servers are independent.
+
+```{r}
+# Given probabilities
+p1 <- 0.40  # Probability of using Server 1
+p2 <- 0.25  # Probability of using Server 2
+p3 <- 0.35  # Probability of using Server 3
+e1 <- 0.01  # Error rate for Server 1
+e2 <- 0.02  # Error rate for Server 2
+e3 <- 0.015 # Error rate for Server 3
+
+```
+### What is the probability of receiving an email containing an error?
+```{r}
+p_error <- p1 * e1 + p2 * e2 + p3 * e3
+p_error
+```
+
+### What is the probability that a message will arrive without error?
+
+```{r}
+p_no_error <- 1 - p_error
+p_no_error
+```
+
+### If a message arrives without error, what is the probability that it was sent through server 1?
+
+```{r}
+p_s1_given_no_error <- (p1 * (1 - e1)) / p_no_error
+p_s1_given_no_error
+```
+
+## A software company surveyed managers to determine the probability that they would buy a new graphics package that includes three-dimensional graphics. About 20% of office managers were certain that they would not buy the package, 70% claimed that they would buy, and the others were undecided. Of those who said that they would not buy the package, only 10% said that they were interested in upgrading their computer hardware. Of those interested in buying the graphics package, 40% were also interested in upgrading their computer hardware. Of the undecided, 20% were interested in upgrading their computer hardware.
+
+-   Let A denote the intention of not buying, B the intention of buying, C the undecided, and G the intention of upgrading the computer hardware.
+
+
+```{r}
+# Given probabilities
+pA <- 0.20  # Probability of not buying
+pB <- 0.70  # Probability of buying
+pC <- 0.10  # Probability of undecided
+gA <- 0.10  # Probability of upgrading given not buying
+gB <- 0.40  # Probability of upgrading given buying
+gC <- 0.20  # Probability of upgrading given undecided
+```
+
+## Calculate the probability that a manager chosen at random will not upgrade the computer hardware ($P(\overline{G})$)
+
+```{r}
+pG <- (pA * gA) + (pB * gB) + (pC * gC)
+pG
+```
+
+## Explain what is meant by the posterior probability of $B$ given $G, P(B\vert G)$.
+```{r}
+pB_given_G <- (gB * pB) / pG
+pB_given_G
+```
+
+## Construct a tree diagram and use it to calculate the following probabilities: $P(G), P(B\vert G), P(B\vert \overline{G}), P(C\vert G), P(\overline{C}\vert \overline{G})$
+```{r}
+pC_given_G <- (gC * pC) / pG
+pA_given_G <- (gA * pA) / pG
+pA_given_G
+pC_given_G
+```
+
+## A malicious spyware can infect a computer system through the Internet or through email. The spyware comes through the Internet 70% of the time and 30% of the time, it gets in through email. If it enters via the Internet the anti-virus detector will detect it with probability 0.6, and via email, it is detected with probability 0.8.
+
+```{r}
+# Given probabilities
+pI <- 0.70  # Probability of spyware entering via Internet
+pE <- 0.30  # Probability of spyware entering via Email
+dI <- 0.60  # Detection probability via Internet
+dE <- 0.80  # Detection probability via Email
+```
+
+
+### What is the probability that this spyware infects the system?
+```{r}
+p_infect <- (pI * (1 - dI)) + (pE * (1 - dE))
+p_infect
+```
+
+### If the spyware is detected, what is the probability that it came through the Internet?
+```{r}
+p_detected <- (pI * dI) + (pE * dE)
+pI_given_detected <- (pI * dI) / p_detected
+pI_given_detected
+```
