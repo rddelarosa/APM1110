@@ -36,7 +36,7 @@ e3 <- 0.015 # Error rate for Server 3
 ```{r}
 p_error <- pm1 * e1 + pm2 * e2 + pm3 * e3
 
-cat("The probability of receiving an email containing an error is ", round(p_error,5), "and the percentage is", round(p_error*100,2),"%." )
+cat("The probability of receiving an email containing an error is ", round(p_error,5), "or", round(p_error*100,2),"%." )
 ```
 
 ### (b) What is the probability that a message will arrive without error?
@@ -44,7 +44,7 @@ cat("The probability of receiving an email containing an error is ", round(p_err
 ```{r}
 p_no_error <- 1 - p_error
 
-cat("The probability that a message will arrive without error is ", round(p_no_error,4), "and the percentage is", round(p_no_error*100,2),"%." )
+cat("The probability that a message will arrive without error is ", round(p_no_error,4), "or", round(p_no_error*100,2),"%." )
 
 ```
 
@@ -54,7 +54,7 @@ cat("The probability that a message will arrive without error is ", round(p_no_e
 ps1_no_error <- (pm1 * (1 - e1)) / p_no_error
 
 
-cat("The probability that a message will arrive without error is", round(ps1_no_error, 4), "and the percentage is", round(ps1_no_error * 100, 2), "%.")
+cat("The probability that a message will arrive without error is", round(ps1_no_error, 4), "or", round(ps1_no_error * 100, 2), "%.")
 
 ```
 
@@ -78,7 +78,7 @@ gC <- 0.20  # Probability of upgrading given undecided
 ```{r}
 prob_not_G <- 1-((prob_A * gA) + (prob_B * gB) + (prob_C * gC))
 
-cat(" The probability that a manager chosen at random will not upgrade the computer hardware is", round(prob_not_G, 4), "and the percentage is", round(prob_not_G * 100, 2), "%.")
+cat(" The probability that a manager chosen at random will not upgrade the computer hardware is", round(prob_not_G, 4), "or", round(prob_not_G * 100, 2), "%.")
 
 ```
 
@@ -131,7 +131,7 @@ detect_E <- 0.80  # Detection probability via Email
 ```{r}
 prob_infect <- (prob_I * (1 - detect_I)) + (prob_E * (1 - detect_E))
 
-cat(" The probability that this spyware infects the system is", round(prob_infect, 4), "and the percentage is", round(prob_infect * 100, 2), "%.")
+cat(" The probability that this spyware infects the system is", round(prob_infect, 4), "or", round(prob_infect * 100, 2), "%.")
 
 
 ```
@@ -141,7 +141,7 @@ cat(" The probability that this spyware infects the system is", round(prob_infec
 p_detected <- (prob_I * detect_I) + (prob_E * detect_E)
 pI_given_detected <- (prob_I * detect_I) / p_detected
 
-cat(" The probability that it came through the Internet is", round(pI_given_detected, 4), "and the percentage is", round(pI_given_detected * 100, 2), "%.")
+cat(" The probability that it came through the Internet is", round(pI_given_detected, 4), "or", round(pI_given_detected * 100, 2), "%.")
 ```
 
 
