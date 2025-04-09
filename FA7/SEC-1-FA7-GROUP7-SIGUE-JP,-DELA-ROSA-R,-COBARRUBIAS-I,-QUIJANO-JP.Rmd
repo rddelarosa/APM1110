@@ -5,7 +5,7 @@ date: "`r Sys.Date()`"
 output:
   pdf_document
 subtitle: "**Github Link: 
-https://github.com/SylTana/APM1110-QUIJANO-JULIAN_PHILIP/blob/main/FA7/SEC-1-FA7-GROUP7-SIGUE-JP%2C-DELA-ROSA-R%2C-COBARRUBIAS-I%2C-QUIJANO-JP.Rmd**"
+https://github.com/rddelarosa/APM1110/blob/main/FA7/SEC-1-FA7-GROUP7-SIGUE-JP%2C-DELA-ROSA-R%2C-COBARRUBIAS-I%2C-QUIJANO-JP.Rmd**"
 ---
 
 ```{r setup, include=FALSE}
