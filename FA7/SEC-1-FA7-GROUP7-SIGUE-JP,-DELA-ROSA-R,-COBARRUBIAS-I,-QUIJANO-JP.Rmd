@@ -1,0 +1,82 @@
+---
+title: "SEC-1-FA7-GROUP7-SIGUE-JP,-DELA-ROSA-R,-COBARRUBIAS-I,-QUIJANO-JP"
+author: "GROUP7"
+date: "`r Sys.Date()`"
+output:
+  pdf_document
+subtitle: "**Github Link: 
+https://github.com/SylTana/APM1110-QUIJANO-JULIAN_PHILIP/blob/main/FA7/SEC-1-FA7-GROUP7-SIGUE-JP%2C-DELA-ROSA-R%2C-COBARRUBIAS-I%2C-QUIJANO-JP.Rmd**"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+  At Far Eastern University (FEU), various events occur randomly, such as student arrivals at the canteen, elevator availability, or queue to get university documents at the Registrar. Understanding these patterns can significantly improve the university administration's ability to plan and provide better services. This case study examines the **time between student arrivals at the 3rd floor library**, where the university's main library is situated.
+
+  The goal of the study is to estimate the average arrival time and assess probabilities related to the situation using the exponential distribution.
+
+# Chosen Scenario
+
+  The chosen scenario for the study is the **time between student arrivals at the 3rd floor library from 8:38 AM to 9:38 AM**. The events are assumed to occur randomly at a constant average rate, which applies the exponential distribution.
+
+# Data Collection
+
+The data was collected at 8:38 AM to 9:38 AM. A total of 1-hour data collection time and 48 time intervals (in minutes) were observed between the arrival of the students in the University's 3rd floor library. This data was recorded and analyzed using R.
+
+```{r}
+library(readxl)
+library(ggplot2)
+
+data = read_excel("FA7 - Data.xlsx")
+```
+
+# Parameter Computation
+
+The exponential distribution is defined as:
+
+- PDF: f(x) = $\Lambda$ * e^(-$\Lambda$ x)
+- CDF: F(x) = 1 - e^(-$\Lambda$ x)
+
+Where $\Lambda$  = 1 / mean
+
+```{r}
+
+mean_minutes <- mean(as.numeric(data$...5[2:49]), na.rm = TRUE)
+
+mean_rate = mean_minutes  
+lambda <- 1 / mean_rate
+x = seq(0, 48, by = 1)
+
+pdf = dexp(x, rate = lambda)
+cdf = pexp(x, rate = lambda)
+
+pdf_data = data.frame(x = x, pdf = pdf)
+cdf_data = data.frame(x = x, cdf = cdf)
+
+
+cat("The Average Arrival Time:", mean_rate, "minutes.\n",
+    "The Mean (expected value):" , lambda, "\n")
+
+
+```
+
+# Visualization 
+
+```{r}
+ggplot(pdf_data, aes(x = x, y = pdf)) +
+  geom_line(color = "blue") +
+  labs(title = "Probability Density Function of Exponential Distribution",
+       x = "x",
+       y = "Density") +
+  theme_minimal()
+```
+
+
+```{r}
+time_intervals = as.numeric(data$...5[2:49])
+
+ggplot(data.frame(time_intervals), aes(x = time_intervals)) + geom_histogram(binwidth = 1, fill = "blue", color = "black") + labs(title = "Histogram of Time Intervals", x = "Time Intervals", y = "Frequency") + theme_minimal()
+```
