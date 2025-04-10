@@ -69,12 +69,12 @@ cat("The Average Arrival Time:", mean_rate, "minutes.\n",
 ggplot(pdf_data, aes(x = x, y = pdf)) +
   geom_line(color = "blue") +
   labs(title = "Probability Density Function of Exponential Distribution",
-       x = "Interval Between Arrivals (seconds)",
+       x = "x",
        y = "Density") +
   theme_minimal()
 ```
-Figure 1: Probability Density Function (PDF) Graph
 
+Figure 1: Probability Density Function (PDF) Graph
 
 ```{r}
 ggplot(cdf_data, aes(x = x, y = cdf)) +
@@ -84,16 +84,27 @@ ggplot(cdf_data, aes(x = x, y = cdf)) +
        y = "Density") +
   theme_minimal()
 ```
-Figure 2: Cumulative Distribution Function (PDF) Graph
 
+Figure 2: Cumulative Distribution Function (PDF) Graph
 
 ```{r}
 time_intervals = as.numeric(data$...5[2:49])
 
 ggplot(data.frame(time_intervals), aes(x = time_intervals)) + geom_histogram(binwidth = 1, fill = "blue", color = "black") + labs(title = "Histogram of Time Intervals", x = "Time Intervals", y = "Frequency") + theme_minimal()
 ```
+
 Figure 3: Histogram of Time Intervals
 
-#Interpretation
+# Interpretation
 
-On average, there is a gap of 1.11905 minutes per arrival while there is 0.8936151 arrivals per minute. Figure 1 shows that the density of the intervals between arrivals are mostly on the shorter end. The graph shows an exponential drop which implies this. Figure 2 shows the Cumulative Distribution Function and shows the probability for the students to arrive at certain time intervals. It also reflects that the next student will arrive with a short wait time from the previous student.
+On average, there is a gap of 1.127177 minutes per arrival while there is 0.887172 arrivals per minute. Figure 1 shows that the density of the intervals between arrivals are mostly on the shorter end. The graph shows an exponential drop which implies this. Figure 2 shows the Cumulative Distribution Function and shows the probability for the students to arrive at certain time intervals. It also reflects that the next student will arrive with a short wait time from the previous student.
+
+# Implications
+
+While the study focuses on a university library, the principles and methods can be applied to other real-world scenarios involving arrival patterns. Examples include:
+
+1)  Queue Management - Businesses can use similar analysis to manage queues and optimize staffing levels during peak hours.
+
+2)  Traffic Flow Analysis - Transportation departments can analyze traffic patterns to improve traffic flow and reduce congestion.
+
+These implications are already being implemented at the Recto Station of LRT2. During peak hours, all escalators operate at full capacity; during off-peak times, the number of operating escalators is reduced.
