@@ -97,7 +97,7 @@ Figure 3: Histogram of Time Intervals
 
 # Interpretation
 
-On average, there is a gap of 1.127177 minutes per arrival while there is 0.887172 arrivals per minute. Figure 1 shows that the density of the intervals between arrivals are mostly on the shorter end. The graph shows an exponential drop which implies this. Figure 2 shows the Cumulative Distribution Function and shows the probability for the students to arrive at certain time intervals. It also reflects that the next student will arrive with a short wait time from the previous student.
+On average, there is a gap of 1.11905 minutes per arrival while there is 0.8936151 arrivals per minute. Figure 1 shows that the density of the intervals between arrivals are mostly on the shorter end. The graph shows an exponential drop which implies this. Figure 2 shows the Cumulative Distribution Function and shows the probability for the students to arrive at certain time intervals. It also reflects that the next student will arrive with a short wait time from the previous student.
 
 # Implications
 
